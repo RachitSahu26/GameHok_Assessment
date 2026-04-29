@@ -1,0 +1,134 @@
+ <div className="min-h-screen bg-[#021a0f] text-white border-4 border-red-500">
+
+      {/* ================= DESKTOP ================= */}
+
+      <div className="hidden md:flex min-h-screen border-4 border-blue-500">
+
+        {/* Sidebar */}
+        <div className="w-64 border-4 border-yellow-400">
+          sidebar
+        </div>
+
+        {/* Main Container */}
+        <div className="flex-1 border-4 border-green-500 p-6 space-y-6">
+
+          {/* HEADER (TOP) */}
+          <div className="">
+            <Header />
+          </div>
+
+          {/* Inner split */}
+          <div className="flex gap-6">
+
+            {/* Left Panel */}
+            <div className="flex-1 border-4 border-orange-500">
+                 <Hero />
+
+              <div className="text-gray-400 text-sm border border-gray-500 p-2">
+                Tournament cards coming next...
+              </div>
+
+            </div>
+
+            {/* Right Panel */}
+           
+
+            <div className="hidden md:block w-80 border-l border-green-900">
+       <RightPanel />
+            </div>
+         
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+
+
+
+
+
+
+
+
+      {/* ================= MOBILE ================= */}
+
+      <div className="md:hidden flex justify-center border-4 border-indigo-500">
+        <div className="w-full max-w-sm px-4 py-4 space-y-4 border-4 border-lime-500">
+
+          <Header />
+          <Hero />
+
+          <div className="text-gray-400 text-sm border border-gray-500 p-2">
+            Tournament cards coming next...
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+
+    border-2 border-red-500
+border-2 border-purple-500
+
+
+
+
+
+
+
+     {/* Header */}
+      <div className="flex justify-between items-center p-3">
+        <h3 className="text-white text-lg font-semibold">
+          Play Tournament by the Game
+        </h3>
+
+        {/* Arrows */}
+        <div className="flex gap-2">
+          <button
+            onClick={scrollLeft}
+            className="p-2 bg-[#252542] rounded-full hover:bg-[#2f2f55]"
+          >
+            <ArrowLeft size={18} className="text-white" />
+          </button>
+
+          <button
+            onClick={scrollRight}
+            className="p-2 bg-[#252542] rounded-full hover:bg-[#2f2f55]"
+          >
+            <ArrowRight size={18} className="text-white" />
+          </button>
+        </div>
+      </div>
+
+      {/* Carousel */}
+      <div
+        ref={scrollRef}
+        className="flex gap-4 overflow-x-auto px-3 pb-3 scroll-smooth scrollbar-hide"
+      >
+        {games.map((game, index) => (
+          <div
+            key={index}
+            className="min-w-[213px] bg-[#002E14] rounded-lg overflow-hidden border border-[#00A155]/30 hover:border-[#00A155]/60 transition"
+          >
+            {/* Image */}
+            <div className="w-full h-[140px]">
+              <img
+                src={game.image}
+                alt={game.name}
+                className="w-full h-full object-cover"
+              />
+            </div>
+
+            {/* Title */}
+            <div className="p-2 text-center">
+              <span className="text-white text-sm font-medium">
+                {game.name}
+              </span>
+            </div>
+          </div>
+        ))}
+      </div>
