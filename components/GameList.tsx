@@ -1,24 +1,29 @@
 "use client";
 
-import { useRef } from "react";
+import { useState } from "react";
 import { ArrowLeft, ArrowRight } from "lucide-react";
-// import { games } from "@/data/Game";
 import Image from "next/image";
-import { games,  } from "@/data/Game";
+import { games } from "@/data/Game";
+
 const GameList = () => {
-  const scrollRef = useRef<HTMLDivElement>(null);
+  const [index, setIndex] = useState(0);
 
-  const scrollLeft = () => {
-    scrollRef.current?.scrollBy({ left: -200, behavior: "smooth" });
+  const visibleCards = 3; // number of cards per view (desktop)
+
+  const next = () => {
+    if (index < games.length - visibleCards) {
+      setIndex(index + 1);
+    }
   };
 
-  const scrollRight = () => {
-    scrollRef.current?.scrollBy({ left: 200, behavior: "smooth" });
+  const prev = () => {
+    if (index > 0) {
+      setIndex(index - 1);
+    }
   };
-
 
   return (
-    <div className="item-center p-4 relative">
+    <div className="p-4  relative">
 
       {/* Header */}
       <div className="p-2 mb-5">
@@ -27,59 +32,48 @@ const GameList = () => {
         </h3>
       </div>
 
-
-
-
-      {/* Arrows (only tablet+) */}
+      {/* Arrows */}
       <button
-        onClick={scrollLeft}
-        className="hidden sm:flex absolute left-2 top-1/2 -translate-y-1/2 z-10 bg-[#01A74B] p-2 rounded-full"
+        onClick={prev}
+        className="absolute left-2 hidden lg:block top-1/2 -translate-y-1/2 z-10 bg-[#01A74B] p-2 rounded-full"
       >
         <ArrowLeft size={20} className="text-white" />
       </button>
 
       <button
-        onClick={scrollRight}
-        className="hidden sm:flex absolute right-2 top-1/2 -translate-y-1/2 z-10 bg-[#01A74B] p-2 rounded-full"
+        onClick={next}
+        className="absolute hidden lg:block right-2 top-1/2 -translate-y-1/2 z-10 bg-[#01A74B] p-2 rounded-full"
       >
         <ArrowRight size={20} className="text-white" />
       </button>
 
-      {/* Grid → Carousel */}
-      <div
-        ref={scrollRef}
-        className="
-         grid grid-cols-2 gap-4
-          sm:w-170
-          sm:flex sm:overflow-x-auto sm:gap-10 sm:pb-2
-          sm:snap-x sm:snap-mandatory
-          scrollbar-hide
-                 "
-      >
-      {games.map((video) => (
-  <div
-    key={video.id}
-    className="
-      rounded-xl 
-      overflow-hidden
-      w-full
-      sm:min-w-[180px]
-      sm:snap-start
-    "
-  >
-    <Image
-      src={video.image}
-      alt={video.title}
-      width={180}
-      height={100}
-      className="w-full h-24 object-cover"
-    />
+      {/* Slider */}
+      <div className="overflow-hidden  cursor-pointer">
+        <div
+          className=" gap-2 grid grid-cols-3 md:grid-cols-4 lg:flex transition-transform duration-500"
+          style={{
+            transform: `translateX(-${index * 200}px)`,
+          }}
+        >
+          {games.map((video) => (
+            <div
+              key={video.id}
+              className=" w-[180px] sm:w-full rounded-xl overflow-hidden"
+            >
+              <Image
+                src={video.image}
+                alt={video.title}
+                width={180}
+                height={100}
+                className="w-full h-24 object-cover"
+              />
 
-    <p className="p-2 text-center text-sm text-white">
-      {video.title}
-    </p>
-  </div>
-))}
+              <p className="p-2 text-center text-sm text-white">
+                {video.title}
+              </p>
+            </div>
+          ))}
+        </div>
       </div>
 
     </div>

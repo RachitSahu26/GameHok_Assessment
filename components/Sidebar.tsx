@@ -1,11 +1,28 @@
+// import { Image } from "lucide-react";
+import image11 from "../public/image11.png"
+import Image from "next/image";
 export default function Sidebar() {
   return (
-    <div className="hidden md:flex flex-col w-64 bg-[#021a0f] border-r border-green-900 p-4 min-h-screen">
-      
-      {/* Logo */}
+  <div className="
+  hidden md:flex
+  fixed top-0 left-0
+
+  w-64
+  h-screen
+
+  flex-col
+  bg-[#021a0f]
+
+  border-r border-green-900
+  p-4
+">
+    {/* Logo */}
       <div className="flex items-center gap-2 mb-6">
-        <div className="w-6 h-6 bg-green-500 rounded-full" />
-        <h1 className="text-white font-semibold text-lg">Gamehok</h1>
+     
+        <h1 className="text-white font-semibold text-lg">
+
+         <Image src={image11} alt="logo" width={100} height={100} />         
+        </h1>
       </div>
 
       {/* Menu */}

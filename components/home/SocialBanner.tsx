@@ -10,6 +10,7 @@ const SocialBanner = () => {
   return (
 
     <div className="
+    cursor-pointer
 w-full
 
   bg-gradient-to-r from-[#003B1F] to-[#00A155]

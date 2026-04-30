@@ -4,7 +4,7 @@ import TournamentCard from "../TournamentCard";
 const FeaturedTournaments = () => {
     return (
       
-        <div className="mb-6 b bg-[#021a0f] rounded-[8px]">
+        <div className="mb-6 cursor-pointer b bg-[#021a0f] rounded-[8px]">
 
   {/* Header */}
   <div className="flex justify-between p-3">
@@ -19,7 +19,7 @@ const FeaturedTournaments = () => {
 
   {/* Swipe Carousel */}
   <div className="
-    border-2 border-green-500
+  
     w-full
     flex gap-4
     overflow-x-auto

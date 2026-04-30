@@ -14,6 +14,7 @@ const BattleCard = ({ title, subtitle, description, image }: Props) => {
         <div className="
   bg-gradient-to-b from-[#182920] to-[#4D5A53]
   rounded-xl 
+  cursor-pointer
   p-4 
   w-full
   min-w-50

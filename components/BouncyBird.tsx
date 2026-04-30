@@ -4,7 +4,7 @@ import birdBanner from "../public/Frame 1244837959.png";
 
 const BouncyBanner = () => {
     return (
-  <div className="w-full  block sm:hidden flex justify-center sm:justify-end">
+  <div className="w-full  cursor-pointer block sm:hidden flex justify-center sm:justify-end">
   <Image
     src={birdBanner}
     alt="bird"

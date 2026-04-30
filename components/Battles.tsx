@@ -30,7 +30,7 @@ const Battles = () => {
             {/* Cards */}
             <div className="
         flex gap-3 overflow-x-auto pb-2
-        sm:grid sm:grid-cols-2 sm:grid-cols-3  sm:overflow-visible
+        sm:grid sm:grid-cols-2 sm:grid-cols-3 sm:gap-2  sm:overflow-visible
        
       ">
                 {battles.map((battle) => (
