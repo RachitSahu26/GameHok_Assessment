@@ -1,3 +1,4 @@
+import image10 from "../public/image10.jpg"
 export const tournaments = [
   {
     id: 1,
@@ -9,7 +10,7 @@ export const tournaments = [
     maxParticipants: 800,
     prizePool: 1000,
     status: "Registration Open",
-    image: "https://images.unsplash.com/photo-1542751371-adc38448a05e"
+    image: image10,
   },
   {
     id: 2,
@@ -21,6 +22,6 @@ export const tournaments = [
     maxParticipants: 300,
     prizePool: 5000,
     status: "Starting Soon",
-    image: "https://images.unsplash.com/photo-1493711662062-fa541f7f3d24"
+    image: image10,
   }
 ];

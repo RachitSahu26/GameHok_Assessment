@@ -2,55 +2,88 @@
 
 import { useRef } from "react";
 import { ArrowLeft, ArrowRight } from "lucide-react";
-import { games } from "@/data/Game";
-// import { videos } from "@/data/video";
-
-
+// import { games } from "@/data/Game";
+import Image from "next/image";
+import { games,  } from "@/data/Game";
 const GameList = () => {
-    const scrollRef = useRef<HTMLDivElement>(null);
+  const scrollRef = useRef<HTMLDivElement>(null);
 
-    const scrollLeft = () => {
-        scrollRef.current?.scrollBy({ left: -250, behavior: "smooth" });
-    };
+  const scrollLeft = () => {
+    scrollRef.current?.scrollBy({ left: -200, behavior: "smooth" });
+  };
 
-    const scrollRight = () => {
-        scrollRef.current?.scrollBy({ left: 250, behavior: "smooth" });
-    };
-
-    return (
+  const scrollRight = () => {
+    scrollRef.current?.scrollBy({ left: 200, behavior: "smooth" });
+  };
 
 
-        <div className="border-2 border-amber-800 p-4">
-            <div className="p-2 mb-5">
-                <h3 className="text-white text-sm font-semibold">
-                    Play Tournament by the Game
-                </h3>
-            </div>
+  return (
+    <div className="item-center p-4 relative">
+
+      {/* Header */}
+      <div className="p-2 mb-5">
+        <h3 className="text-white text-sm font-semibold">
+          Play Tournament by the Game
+        </h3>
+      </div>
 
 
-            <div className="grid grid-cols-3 sm:grid-cols-3   lg:grid-cols-4 gap-4">
 
-                {games.map((video) => (
-                    <div
-                        key={video.id}
-                        className="min-w-116px min-h-112px   rounded-xl overflow-hidden"
-                    >
-                        <img
-                            src={video.image}
-                            alt={video.name}
-                            className="min-w-115px min-h-92px object-cover"
-                        />
-                        <p className="p-2 text-sm text-white">
-                            {video.name}
-                        </p>
-                    </div>
-                ))}
 
-            </div>
+      {/* Arrows (only tablet+) */}
+      <button
+        onClick={scrollLeft}
+        className="hidden sm:flex absolute left-2 top-1/2 -translate-y-1/2 z-10 bg-[#01A74B] p-2 rounded-full"
+      >
+        <ArrowLeft size={20} className="text-white" />
+      </button>
 
-        </div>
+      <button
+        onClick={scrollRight}
+        className="hidden sm:flex absolute right-2 top-1/2 -translate-y-1/2 z-10 bg-[#01A74B] p-2 rounded-full"
+      >
+        <ArrowRight size={20} className="text-white" />
+      </button>
 
-    );
+      {/* Grid → Carousel */}
+      <div
+        ref={scrollRef}
+        className="
+         grid grid-cols-2 gap-4
+          sm:w-170
+          sm:flex sm:overflow-x-auto sm:gap-10 sm:pb-2
+          sm:snap-x sm:snap-mandatory
+          scrollbar-hide
+                 "
+      >
+      {games.map((video) => (
+  <div
+    key={video.id}
+    className="
+      rounded-xl 
+      overflow-hidden
+      w-full
+      sm:min-w-[180px]
+      sm:snap-start
+    "
+  >
+    <Image
+      src={video.image}
+      alt={video.title}
+      width={180}
+      height={100}
+      className="w-full h-24 object-cover"
+    />
+
+    <p className="p-2 text-center text-sm text-white">
+      {video.title}
+    </p>
+  </div>
+))}
+      </div>
+
+    </div>
+  );
 };
 
 export default GameList;

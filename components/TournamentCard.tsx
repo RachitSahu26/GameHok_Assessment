@@ -1,7 +1,8 @@
 import { Trophy, Users } from "lucide-react";
 import Coin from "./coin";
 // import Coin from "./Coin";
-
+import {  StaticImageData } from "next/image";
+import Image from "next/image";
 type Tournament = {
   id: number;
   title: string;
@@ -12,14 +13,13 @@ type Tournament = {
   maxParticipants: number;
   prizePool: number;
   status: string;
-  image: string;
+  image: StaticImageData; // ✅ fix
 };
 
 const TournamentCard = ({ tournament }: { tournament: Tournament }) => {
   return (
- 
+
     <div className="
-  bg-[#002E14]
 
   rounded-8px
   overflow-hidden
@@ -29,7 +29,7 @@ const TournamentCard = ({ tournament }: { tournament: Tournament }) => {
 ">
       {/* Image */}
       <div className="relative h-36">
-        <img
+        <Image
           src={tournament.image}
           alt={tournament.title}
           className="w-full h-full object-cover"
@@ -61,15 +61,15 @@ const TournamentCard = ({ tournament }: { tournament: Tournament }) => {
 
         {/* Tags */}
         <div className="flex flex-wrap gap-2 mb-3">
-          <span className="bg-purple-500/20 text-purple-400 text-xs px-2 py-1 rounded">
+          <span className="bg-[#002E14] text-white-400 text-xs px-2 py-1 rounded">
             {tournament.game}
           </span>
 
-          <span className="bg-blue-500/20 text-blue-400 text-xs px-2 py-1 rounded">
+          <span className="bg-[#002E14] text-white-400 text-xs px-2 py-1 rounded">
             {tournament.mode}
           </span>
 
-          <span className="bg-orange-500/20 text-orange-400 text-xs px-2 py-1 rounded flex items-center gap-1">
+          <span className="bg-[#002E14] text-white-400 text-xs px-2 py-1 rounded flex items-center gap-1">
             <Coin size={10} /> {tournament.entry}
           </span>
         </div>

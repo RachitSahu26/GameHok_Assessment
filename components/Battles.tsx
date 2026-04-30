@@ -3,30 +3,35 @@ import BattleCard from "./BattleCard";
 
 const Battles = () => {
     return (
-       <div className="
+        <div className="
   p-2 
   flex flex-col 
   gap-2 
   overflow-x-auto 
-  border-2 border-purple-500
+ 
 ">
             {/* Title */}
-            <div>
 
-                <h2 className="text-white text-[16px] leading-[20px] font-semibold tracking-normal font-inter">
+
+
+            <div className="flex justify-between p-3">
+                <h3 className="text-white text-sm font-bold">
                     Compete in Daily Battles
-                </h2>
-            </div>
+                </h3>
 
+                <h3 className="text-white text-sm font-bold">
+                    View all
+                </h3>
+            </div>
 
 
 
 
             {/* Cards */}
             <div className="
-        flex gap-4 overflow-x-auto pb-2
-        lg:grid lg:grid-cols-2 xl:grid-cols-3 lg:overflow-visible
-         border-2 border-red-500
+        flex gap-3 overflow-x-auto pb-2
+        sm:grid sm:grid-cols-2 sm:grid-cols-3  sm:overflow-visible
+       
       ">
                 {battles.map((battle) => (
                     <BattleCard key={battle.id} {...battle} />

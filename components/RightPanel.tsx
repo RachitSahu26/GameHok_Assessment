@@ -1,10 +1,16 @@
 "use client";
 
+import Image, { StaticImageData } from "next/image";
 import { useState } from "react";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { videos } from "@/data/video";
 
 export default function RightPanel() {
+  type Video = {
+    id: number;
+    title: string;
+    image: StaticImageData;
+  };
   const [index, setIndex] = useState(0);
 
   const prevSlide = () => {
@@ -16,7 +22,7 @@ export default function RightPanel() {
   };
 
   return (
-    <div className="w-full p-2 space-y-4">
+    <div className="  p-2  space-y-4 ">
       <div className="flex justify-between">
         <h2 className="text-white font-semibold text-lg">
           Game Highlights
@@ -27,47 +33,57 @@ export default function RightPanel() {
 
 
       {/* Carousel Container */}
-      <div className="relative w-full overflow-hidden rounded-xl">
+      <div className="
+  relative w-full
+  overflow-x-auto
+  snap-x snap-mandatory
+  scroll-smooth
+   bordker-red-500
+
+  lg:overflow-visible
+  lg:snap-none
+">
 
         {/* Slides */}
         <div
-          className="flex transition-transform duration-500"
-          style={{
-            transform: `translateX(-${index * 100}%)`,
-          }}
+          className="
+      flex gap-3
+w-90
+sm:w-full
+      lg:flex-col
+    "
         >
-          {videos.map((video) => (
-            <div
-              key={video.id}
-              className="min-w-full bg-[#0b2d1f] h-60"
-            >
-              <img
-                src={video.image}
-                alt={video.title}
-                className="w-full h-40 object-cover"
-              />
-              <p className="p-2 text-sm text-white">
-                {video.title}
-              </p>
-            </div>
-          ))}
+
+          {
+            videos.map((video) => (
+
+              <div
+                key={video.id}
+                className="
+          min-w-full snap-start   /* mobile */
+
+          lg:min-w-0             /* reset */
+          lg:w-full
+        "
+              >
+                <Image
+                  src={video.image}
+                  alt={video.title}
+                  width={300}
+                  height={160}
+                  className="w-full h-40 rounded-xl  object-cover"
+                />
+
+                <p className="p-2 text-sm text-white">
+                  {video.title}
+                </p>
+              </div>
+            ))}
+
+
         </div>
 
-        {/* Left Button */}
-        <button
-          onClick={prevSlide}
-          className="absolute top-1/2 left-2 -translate-y-1/2 bg-black/50 p-2 rounded-full"
-        >
-          <ArrowLeft className="text-white" size={18} />
-        </button>
 
-        {/* Right Button */}
-        <button
-          onClick={nextSlide}
-          className="absolute top-1/2 right-2 -translate-y-1/2 bg-black/50 p-2 rounded-full"
-        >
-          <ArrowRight className="text-white" size={18} />
-        </button>
 
       </div>
 

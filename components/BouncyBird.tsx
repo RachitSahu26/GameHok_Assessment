@@ -4,18 +4,17 @@ import birdBanner from "../public/Frame 1244837959.png";
 
 const BouncyBanner = () => {
     return (
-       <div className="relative block md:hidden mb-5 h-40 rounded-2xl overflow-hidden p-5">
-        {/* <div className="border-2 border-purple-500 ">
-             
-
-            </div> */}
-            {/* Bird Image */}
-            <Image
-                src={birdBanner}
-                alt="bird"
-      className=" w-full h-full  object-contain"
-            />
-        </div>
+  <div className="w-full  block sm:hidden flex justify-center sm:justify-end">
+  <Image
+    src={birdBanner}
+    alt="bird"
+    className="
+      w-full h-auto           /* mobile */
+               
+      object-contain
+    "
+  />
+</div>
     );
 };
 

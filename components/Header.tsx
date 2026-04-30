@@ -1,6 +1,6 @@
 export default function Header() {
   return (
-    <div className="flex justify-between items-center mb-4 border-b border-green-900">
+    <div className="flex justify-between items-center mb-4 ">
       
       {/* Left - Logo */}
       <div className="flex items-center gap-2">

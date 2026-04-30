@@ -15,9 +15,11 @@ const BattleCard = ({ title, subtitle, description, image }: Props) => {
   bg-gradient-to-b from-[#182920] to-[#4D5A53]
   rounded-xl 
   p-4 
-  w-35
+  w-full
+  min-w-50
+  sm:w-40
   flex flex-col gap-3
-  border-2 border-green-900/40
+   border-2 border-green-900/40
 ">
 
             {/* Logo */}
