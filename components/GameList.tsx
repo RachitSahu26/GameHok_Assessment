@@ -50,7 +50,7 @@ const GameList = () => {
       {/* Slider */}
       <div className="overflow-hidden  cursor-pointer">
         <div
-          className=" gap-2 grid grid-cols-3 md:grid-cols-4 lg:flex transition-transform duration-500"
+          className=" gap-2 grid grid-cols-2 md:grid-cols-4 lg:flex transition-transform duration-500"
           style={{
             transform: `translateX(-${index * 200}px)`,
           }}
